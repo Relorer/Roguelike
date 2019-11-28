@@ -1,0 +1,10 @@
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\Roguelike.exe.config
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\Roguelike.exe
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\Roguelike.pdb
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\sfml-audio.dll
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\sfml-graphics.dll
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\sfml-system.dll
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\bin\Release\sfml-window.dll
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Release\Roguelike.csproj.CopyComplete
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Release\Roguelike.exe
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Release\Roguelike.pdb
