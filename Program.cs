@@ -12,12 +12,12 @@ namespace Roguelike
     {
         private static RenderWindow Window;
         private static bool FullScreen;
+
         public static void Main(string[] args)
         {
             Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike", Styles.Default);
             FullScreen = false;
             ToConfigureWindow();
-
             Open();
         }
 
@@ -34,13 +34,10 @@ namespace Roguelike
 
         private static void Open()
         {
-            CircleShape circleShape = new CircleShape(15);
-            circleShape.FillColor = Color.Blue;
             while (Window.IsOpen)
             {
                 Window.DispatchEvents();
                 Window.Clear();
-                Window.Draw(circleShape);
                 Window.Display();
             }
         }
@@ -56,7 +53,7 @@ namespace Roguelike
                 }
                 else
                 {
-                    Window = new RenderWindow(new VideoMode(100, 100, 32), "Roguelike", Styles.Fullscreen, new ContextSettings(24,24));
+                    Window = new RenderWindow(new VideoMode(), "Roguelike", Styles.Fullscreen);
                 }
                 FullScreen = !FullScreen;
             }
