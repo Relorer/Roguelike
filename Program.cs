@@ -15,7 +15,6 @@ namespace Roguelike
             ToConfigureWindow();
             Open();
             Settings.Default.Save();
-            Console.WriteLine("sd");
         }
 
         private static void ToConfigureWindow()
