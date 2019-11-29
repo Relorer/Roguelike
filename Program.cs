@@ -1,24 +1,21 @@
-﻿using SFML.Graphics;
+﻿using Roguelike.Properties;
+using SFML.Graphics;
 using SFML.Window;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roguelike
 {
     class Program
     {
         private static RenderWindow Window;
-        private static bool FullScreen;
 
         public static void Main(string[] args)
         {
-            Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike", Styles.Default);
-            FullScreen = false;
+            Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike", Settings.Default.ScreenMode);
             ToConfigureWindow();
             Open();
+            Settings.Default.Save();
+            Console.WriteLine("sd");
         }
 
         private static void ToConfigureWindow()
@@ -26,6 +23,8 @@ namespace Roguelike
             Window.SetKeyRepeatEnabled(false);
             Window.SetVerticalSyncEnabled(true);
             Window.SetFramerateLimit(60);
+            Image icon = new Image("Resources\\icon.png");
+            Window.SetIcon(icon.Size.X, icon.Size.Y, icon.Pixels);
 
             Window.Closed += Window_Closed;
             Window.Resized += Window_Resized;
@@ -42,21 +41,11 @@ namespace Roguelike
             }
         }
 
-        private static void TryToChangeDisplayMode()
+        private static void ToChangeDisplayMode()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.LAlt) && Keyboard.IsKeyPressed(Keyboard.Key.Return))
-            {
-                Window.Close();
-                if (FullScreen)
-                {
-                    Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike");
-                }
-                else
-                {
-                    Window = new RenderWindow(new VideoMode(), "Roguelike", Styles.Fullscreen);
-                }
-                FullScreen = !FullScreen;
-            }
+            Window.Close();
+            Settings.Default.ScreenMode = Settings.Default.ScreenMode == Styles.Default ? Styles.Fullscreen : Styles.Default;
+            Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike", Settings.Default.ScreenMode);
             ToConfigureWindow();
         }
 
@@ -67,7 +56,10 @@ namespace Roguelike
 
         private static void Window_KeyPressed(object sender, KeyEventArgs e)
         {
-            TryToChangeDisplayMode();
+            if (Keyboard.IsKeyPressed(Keyboard.Key.LAlt) && Keyboard.IsKeyPressed(Keyboard.Key.Return))
+            {
+                ToChangeDisplayMode();
+            }
         }
 
         private static void Window_Closed(object sender, EventArgs e)

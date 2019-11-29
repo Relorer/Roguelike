@@ -9,3 +9,5 @@ C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.csprojAssembly
 C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.csproj.CopyComplete
 C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.exe
 C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.pdb
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.Properties.Resources.resources
+C:\Users\Ytm\source\repos\Roguelike\Roguelike\obj\Debug\Roguelike.csproj.GenerateResource.cache
