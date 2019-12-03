@@ -1,5 +1,8 @@
-﻿using Roguelike.Properties;
+﻿using Roguelike.EventArgsClases;
+using Roguelike.Pages;
+using Roguelike.Properties;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 using System;
 
@@ -9,13 +12,15 @@ namespace Roguelike
     {
         private static RenderWindow Window;
 
+        private static Page Page;
+
         public static void Main(string[] args)
         {
             Window = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width / 2, VideoMode.DesktopMode.Height / 2), "Roguelike", Settings.Default.ScreenMode);
             ToConfigureWindow();
+            Program_ChangedPage(null, new ChangedPageEventArgs(new MainMenu()));
             Open();
             Settings.Default.Save();
-            Console.WriteLine("sd");
         }
 
         private static void ToConfigureWindow()
@@ -23,8 +28,6 @@ namespace Roguelike
             Window.SetKeyRepeatEnabled(false);
             Window.SetVerticalSyncEnabled(true);
             Window.SetFramerateLimit(60);
-            Image icon = new Image("Resources\\icon.png");
-            Window.SetIcon(icon.Size.X, icon.Size.Y, icon.Pixels);
 
             Window.Closed += Window_Closed;
             Window.Resized += Window_Resized;
@@ -33,10 +36,13 @@ namespace Roguelike
 
         private static void Open()
         {
+            StaticClock.Restart();
             while (Window.IsOpen)
             {
                 Window.DispatchEvents();
                 Window.Clear();
+                Window.Draw(Page);
+                StaticClock.Restart();
                 Window.Display();
             }
         }
@@ -49,9 +55,18 @@ namespace Roguelike
             ToConfigureWindow();
         }
 
+        private static void Program_ChangedPage(object sender, ChangedPageEventArgs e)
+        {
+            Page = e.NewPage;
+            Page.ChangedPage += Program_ChangedPage;
+        }
+
         private static void Window_Resized(object sender, SizeEventArgs e)
         {
             Window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
+            if (e.Width < 600) Window.Size = new Vector2u(600, e.Height);
+            else if (e.Height < 400) Window.Size = new Vector2u(e.Width, 400);
+            
         }
 
         private static void Window_KeyPressed(object sender, KeyEventArgs e)
