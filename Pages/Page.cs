@@ -7,5 +7,6 @@ namespace Roguelike.Pages
     interface Page : Drawable
     {
         event EventHandler<ChangedPageEventArgs> ChangedPage;
+        event EventHandler<ChangedViewCenterEventArgs> ChangedViewCenter;
     }
 }

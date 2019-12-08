@@ -9,11 +9,22 @@ namespace Roguelike.Pages
     {
         public event EventHandler<ChangedPageEventArgs> ChangedPage;
 
+        public event EventHandler<ChangedViewCenterEventArgs> ChangedViewCenter;
+
         private UserInterface UserInterface;
 
         private GameField GameField;
 
         private Pause Pause;
+
+        public bool IsPause {
+            get {
+                return Pause != null;
+            }
+            set {
+                Pause = value ? new Pause() : null;
+            }
+        }
 
         public GamePlay()
         {
@@ -24,17 +35,11 @@ namespace Roguelike.Pages
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            try
-            {
-                target.Draw(GameField, states);
-                target.Draw(UserInterface, states);
-                if (Pause != null)
-                    target.Draw(Pause, states);
-            }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            ChangedViewCenter.Invoke(this, new ChangedViewCenterEventArgs(GameField.Player.Position));
+            target.Draw(GameField, states);
+            target.Draw(UserInterface, states);
+            if (IsPause)
+                target.Draw(Pause, states);
         }
 
         private void EndTheGame(object sender, EndGameEventArgs e)

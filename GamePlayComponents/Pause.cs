@@ -11,7 +11,7 @@ namespace Roguelike.GamePlayComponents
     {
         public void Draw(RenderTarget target, RenderStates states)
         {
-            throw new NotImplementedException();
+            //todo
         }
     }
 }
