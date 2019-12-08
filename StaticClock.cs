@@ -6,9 +6,9 @@ namespace Roguelike
     {
         static public Clock Clock { get; private set; }
 
-        static public long ElapsedMilliseconds {
+        static public Time ElapsedTime {
             get {
-                return Clock.ElapsedTime.AsMilliseconds();
+                return Clock.ElapsedTime;
             }
         }
 

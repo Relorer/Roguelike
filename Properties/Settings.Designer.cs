@@ -34,29 +34,5 @@ namespace Roguelike.Properties {
                 this["ScreenMode"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public uint GamePad {
-            get {
-                return ((uint)(this["GamePad"]));
-            }
-            set {
-                this["GamePad"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1920, 1080")]
-        public global::System.Drawing.Point Resolution {
-            get {
-                return ((global::System.Drawing.Point)(this["Resolution"]));
-            }
-            set {
-                this["Resolution"] = value;
-            }
-        }
     }
 }

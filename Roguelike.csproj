@@ -78,22 +78,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Animation.cs" />
-    <Compile Include="Animations\AnimationManager.cs" />
-    <Compile Include="EventArgsClases\AnimationEndedEventArgs.cs" />
     <Compile Include="EventArgsClases\ButtonClickEventArgs.cs" />
     <Compile Include="EventArgsClases\ChangedPageEventArgs.cs" />
-    <Compile Include="EventArgsClases\ChangedViewCenterEventArgs.cs" />
     <Compile Include="EventArgsClases\EndGameEventArgs.cs" />
-    <Compile Include="EventArgsClases\ScrollChangedEventArgs.cs" />
-    <Compile Include="Extensions\RenderWindowExtension.cs" />
     <Compile Include="GamePlayComponents\GameField.cs" />
-    <Compile Include="GamePlayComponents\GameFieldComponents\Player.cs" />
     <Compile Include="GamePlayComponents\Pause.cs" />
     <Compile Include="GamePlayComponents\UserInterface.cs" />
     <Compile Include="Pages\GamePlay.cs" />
     <Compile Include="Pages\MainMenu.cs" />
-    <Compile Include="Pages\Options.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,14 +99,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="PropertyClasses\Margin.cs" />
     <Compile Include="StaticClock.cs" />
-    <Compile Include="UIElements\Button.cs" />
-    <Compile Include="UIElements\Scroll.cs" />
-    <Compile Include="UIElements\ScrollViewer.cs" />
-    <Compile Include="UIElements\StackPanel.cs" />
-    <Compile Include="UIElements\TextBlock.cs" />
-    <Compile Include="UIElements\UIElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -141,6 +126,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
